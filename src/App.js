@@ -17,7 +17,7 @@ function App() {
   });
   const getWeather =(e)=> {
     e.preventDefault();
-    axios.get("https://api.weatherapi.com/v1/current.json?key=b24c63cafd8146d4831124254212503&q=London&aqi=no")
+    axios.get(`https://api.weatherapi.com/v1/current.json?key=b24c63cafd8146d4831124254212503&q=${city}&aqi=no`)
       .then(res => {
         setResults({
           country: res.data.location.country,
@@ -30,10 +30,12 @@ function App() {
       })
   }
   return (
-    <div className="test">
-      <Title />
-      <Form setCity={setCity} getWeather={getWeather} />
-      <Result results={results} />
+    <div className="wrapper">
+      <div className="container">
+        <Title />
+        <Form setCity={setCity} getWeather={getWeather} />
+        <Result results={results} />
+      </div>
     </div>
   );
 }
